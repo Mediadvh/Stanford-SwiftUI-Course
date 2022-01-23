@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-  
-    var emojis = ["❤️‍🔥","😂","🧸","😤","😆","💄","🦾","🍎","🦠","🩹","🧯","🛢","💎","🛡","🪆","📥","✂️","🖤","🚎","🪕"]
-    @State var emojisCount = 19
+    @State var emojis = ["❤️‍🔥","😂","🧸","😤","😆","💄","🦾","🍎","🦠","🩹","🧯","🛢"]
+    
+    
+    @State var emojisCount = 12
     var body: some View {
         VStack {
             Text("Memorize!")
@@ -26,7 +27,14 @@ struct ContentView: View {
             HStack {
                 remove
                 Spacer()
+                faceTheme
+                Spacer()
+                carTheme
+                Spacer()
+                appleTheme
+                Spacer()
                 add
+                
             }
             .padding(.horizontal)
         }
@@ -40,12 +48,12 @@ struct ContentView: View {
     // view properties
     var add: some View {
         return Button {
-            if emojisCount != emojis.count - 1 {
+            if emojisCount != emojis.count {
                 emojisCount += 1
             }
         } label: {
             let image = Image(systemName: "plus.circle.fill")
-            if emojisCount == emojis.count - 1 {
+            if emojisCount == emojis.count  {
                image
                .foregroundColor(.gray)
             } else {
@@ -69,7 +77,50 @@ struct ContentView: View {
             
         }
     }
+    var faceTheme: some View {
+        return VStack {
+            Button {
+                emojis = ["😅","😀","😁","😂","😊","😖","🥶","😵","😵‍💫","🥳"]
+                emojisCount = emojis.count
+                emojis.shuffle()
+            } label: {
+                Image(systemName: "face.smiling.fill")
+            }
+            Text("face theme")
+                .font(.caption)
+        }
         
+    }
+    var carTheme: some View {
+        return VStack {
+            Button {
+                emojis = ["🚗","🚙","🏎","🚕","🚓","🚘","🚖","🚔","🚋","🚃","🚠"]
+                emojisCount = emojis.count
+                emojis.shuffle()
+            } label: {
+                Image(systemName: "car.fill")
+            }
+            Text("car theme")
+                .font(.caption)
+                
+        }
+    }
+    var appleTheme: some View {
+        return VStack {
+            Button {
+                emojis = ["🍎","📱","⌚️","🖥","💻","⌨️","🎧","📲","👩🏻‍💻","🧑🏽‍💻","👨🏿‍💻","🍏"]
+                emojisCount = emojis.count
+                emojis.shuffle()
+            } label: {
+                Image(systemName: "applelogo")
+            }
+            Text("apple theme")
+                .font(.caption)
+            
+        }
+        
+    }
+    
 }
 
 struct CardView: View {
@@ -94,6 +145,7 @@ struct CardView: View {
         }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
