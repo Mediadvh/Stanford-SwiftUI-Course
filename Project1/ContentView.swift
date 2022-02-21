@@ -25,15 +25,14 @@ struct ContentView: View {
             .foregroundColor(.red)
             Spacer()
             HStack {
-                remove
-                Spacer()
+        
                 faceTheme
                 Spacer()
                 carTheme
                 Spacer()
                 appleTheme
-                Spacer()
-                add
+          
+               
                 
             }
             .padding(.horizontal)
@@ -46,37 +45,7 @@ struct ContentView: View {
         
     
     // view properties
-    var add: some View {
-        return Button {
-            if emojisCount != emojis.count {
-                emojisCount += 1
-            }
-        } label: {
-            let image = Image(systemName: "plus.circle.fill")
-            if emojisCount == emojis.count  {
-               image
-               .foregroundColor(.gray)
-            } else {
-                image
-            }
-        }
-    }
-    var remove: some View {
-        return Button {
-            if emojisCount > 1{
-                emojisCount -= 1
-            }
-        } label: {
-        let image = Image(systemName: "minus.circle.fill")
-            if emojisCount == 1{
-                image
-                    .foregroundColor(.gray)
-            } else {
-                image
-            }
-            
-        }
-    }
+    
     var faceTheme: some View {
         return VStack {
             Button {
